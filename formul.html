@@ -1,0 +1,156 @@
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>formulaire</title>
+  <link rel="stylesheet" href="styles.css">
+ </head>
+ <style>
+
+    /* styles.css */
+#marquee-container {
+    width: 100%;
+    overflow: hidden;
+    color: aliceblue;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+}
+
+#marquee-text {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 15s linear infinite;
+    font-style: normal;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+    
+    fieldset{
+        width: 800px;
+        height: 300px;
+        text-align: center;
+        border-radius: 20px;
+        margin-left: 20%;
+    }
+    fieldset input[type="text"]{
+        width: 400px;
+        height: 30px;
+        border-radius: 20px;
+    }
+    fieldset input[type="password"]{
+        width: 400px;
+        height: 30px;
+        padding:  1px 80px;
+        border-radius: 20px;
+    }
+    legend{
+        text-align: center;
+        text-transform: capitalize;
+        font-size:large;
+    }
+    p{
+        margin-left: 20%;
+    }
+    .input-centered {
+            text-align: center;
+        }
+    h4{
+        margin-top: 20px; 
+        margin-left: 20px;
+        font-style: italic;
+        color: limegreen;
+    }
+    legend{
+        color: azure;
+    }
+    label{
+        color: beige;
+    }
+    input{
+        font-size: 20px;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    input#nom{
+        text-transform: uppercase;
+    }
+    input#prenom{
+        text-transform: capitalize;
+    }
+ </style>
+ <body>
+    <h4>
+        Entrer vos information personnel dans le cadrans ci-dessous pour vous enregistrer sur note page wed.<br/>
+        La confidencialité de vos information est l'une de nos priorité majeur ainsi vous n'avez crainde a remplir ce formulaire. 
+    </h4>
+    <form method="post" action="traitement.php">
+    <fieldset>
+        <legend>Vos coordonnées</legend>
+        <label for="nom">Entrer votre nom</label><br/>
+        <input type="text" name="nom" id="nom"   value=""  class="input-centered"  tabindex="10"/><br/>
+        
+        <label for="prenom">Entrer votre prenom</label><br/>
+        <input type="text" name="prenom" id="prenom"   value=""  class="input-centered"  tabindex="20"><br/>
+
+        <label for="email">Entrer votre email</label><br/>
+        <input type="text" name="email" id="email"   value=""  class="input-centered"  tabindex="30"><br/>
+
+        <label for="pass">Votre mots de passe</label><br/>
+        <input type="password" name="pass" id="pass"   value="" class="input-centered" tabindex="40"><br/>
+
+        <p>
+            <input type="submit" value="Envoyer"/> <input type="reset" value="Effacer"/>
+           </p>
+        
+    </fieldset>
+    </form>
+  
+
+
+    <footer>
+        <div id="marquee-container">
+            <p id="marquee-text">Créé par - SALAOU Souleyman A.</p>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript intégré
+        document.addEventListener('DOMContentLoaded', function() {
+            const marqueeText = document.getElementById('marquee-text');
+            const animationDuration = 30000; // Durée du défilement en millisecondes (30 secondes)
+            const pauseDuration = 60000; // Durée de la pause en millisecondes (60 secondes)
+
+            function pauseAnimation() {
+                marqueeText.style.animationPlayState = 'paused';
+                setTimeout(() => {
+                    marqueeText.style.animationPlayState = 'running';
+                }, pauseDuration);
+            }
+
+            // Répéter le cycle
+            function startMarqueeCycle() {
+                setTimeout(() => {
+                    pauseAnimation();
+                    startMarqueeCycle();
+                }, animationDuration);
+            }
+
+            startMarqueeCycle();
+        });
+    </script>
+ </body>
+ </html>
+
+ 
